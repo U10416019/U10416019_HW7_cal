@@ -231,5 +231,34 @@ public class ActionCalculatorFX extends Application{
 			str = str + ".";
 			text.setText(str);
 		});
-
+		
+		plus.setOnAction((ActionEvent e) -> {
+			//determine whether the number hasn't been calculate
+			if(symbol == 0){
+				total = Double.valueOf(strnum);
+				symbol = 1;
+			}
+			else if(symbol == 1){
+				number = strnum;
+				calculate();
+			}
+			//let the string become empty
+			strnum = "";
+			pattern = '+';
+			str = str + "+";
+			//print the string on the text
+			text.setText(str);
+		});
+		
+	//create a method to calculate the number
+	//when press plus button, minus button, etc
+	public void calculate(){
+		switch(pattern){
+			case '+':
+				total = total + Double.valueOf(strnum);
+				break;
+			
+		}
+	}
+	
 }
