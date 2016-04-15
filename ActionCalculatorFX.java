@@ -351,7 +351,40 @@ public class ActionCalculatorFX extends Application{
 		
 //		CE.setOnAction((ActionEvent e) -> {});
 
-
+		C.setOnAction((ActionEvent e) -> {
+			//let all variable become empty or zero
+			strnum = "";
+			str = "";
+			total = 0;
+			symbol = 0;
+			number = "";
+			text.setText(str);
+		});
+		
+		plusAndMinus.setOnAction((ActionEvent e) -> {		
+			number = strnum;
+			calculate();
+			//change the sign of the number
+			total *= (-1);
+			strnum = String.valueOf(total);
+			str = String.valueOf(total);
+			text.setText(str);
+			number = "";	
+		});
+		
+		root.setOnAction((ActionEvent e) -> {
+			number = strnum;
+			strnum = "";
+			str = str + "v--";
+			//root the number
+			number = String.valueOf(Math.sqrt(Double.valueOf(number)));	
+			text.setText(str);			
+			strnum = strnum + number;
+			number = "";	
+		});
+		
+		
+	}
 		
 	
 	//create a method to calculate the number
@@ -386,6 +419,9 @@ public class ActionCalculatorFX extends Application{
 				total = Double.valueOf(strnum);
 				break;
 				
+			case 'v':
+				total = Math.sqrt(Double.valueOf(strnum));
+				break;
 		}
 	}
 	
