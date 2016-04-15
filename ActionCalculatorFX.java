@@ -324,7 +324,36 @@ public class ActionCalculatorFX extends Application{
 			str = "1/" + str;
 			text.setText(str);
 		});
+		
+		equal.setOnAction((ActionEvent e) -> {
+			number = strnum;
+			calculate();
+			//after press the equal button, the number input will be the first number
+			symbol = 0;
+			strnum = String.valueOf(total);
+			str = String.valueOf(total);
+			pattern = 's';
+			text.setText(str);
+		});
+		
+//		MC.setOnAction((ActionEvent e) -> {});
+//		MR.setOnAction((ActionEvent e) -> {});
+//		MS.setOnAction((ActionEvent e) -> {});
+//		Mplus.setOnAction((ActionEvent e) -> {});
+//		Mminus.setOnAction((ActionEvent e) -> {});
 
+		delete.setOnAction((ActionEvent e) -> {
+			//let the string minus the last letter
+			strnum = strnum.substring(0, strnum.length() - 1);
+			str = str.substring(0, str.length() - 1);
+			text.setText(str);
+		});
+		
+//		CE.setOnAction((ActionEvent e) -> {});
+
+
+		
+	
 	//create a method to calculate the number
 	//when press plus button, minus button, etc
 	public void calculate(){
@@ -352,7 +381,11 @@ public class ActionCalculatorFX extends Application{
 			case 'f':
 				total = 1 / total;
 				break;
-			
+				
+			case 's':
+				total = Double.valueOf(strnum);
+				break;
+				
 		}
 	}
 	
