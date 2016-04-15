@@ -250,12 +250,107 @@ public class ActionCalculatorFX extends Application{
 			text.setText(str);
 		});
 		
+		minus.setOnAction((ActionEvent e) -> {
+			if(symbol == 0){
+				total = Double.valueOf(strnum);
+				symbol = 1;
+			}
+			else if(symbol == 1){
+				number = strnum;
+				calculate();
+			}
+			strnum = "";
+			pattern = '-';
+			str = str + "-";
+			text.setText(str);
+		});
+		
+		multiply.setOnAction((ActionEvent e) -> {
+			if(symbol == 0){
+				total = Double.valueOf(strnum);
+				symbol = 1;
+			}
+			else if(symbol == 1){
+				number = strnum;
+				calculate();
+			}
+			strnum = "";
+			pattern = 'x';
+			str = str + "x";
+			text.setText(str);
+		});
+		
+		divide.setOnAction((ActionEvent e) -> {
+			if(symbol == 0){
+				total = Double.valueOf(strnum);
+				symbol = 1;
+			}
+			else if(symbol == 1){
+				number = strnum;
+				calculate();
+			}
+			strnum = "";
+			pattern = '/';
+			str = str + "/";
+			text.setText(str);
+		});
+		
+		persent.setOnAction((ActionEvent e) -> {
+			if(symbol == 0){
+				total = Double.valueOf(strnum);
+				symbol = 1;
+			}
+			else if(symbol == 1){
+				number = strnum;
+				calculate();
+			}
+			strnum = "";
+			pattern = '%';
+			str = str + "%";
+			text.setText(str);
+		});
+		
+		fraction.setOnAction((ActionEvent e) -> {
+			if(symbol == 0){
+				total = Double.valueOf(strnum);
+				symbol = 1;
+			}
+			else if(symbol == 1){
+				number = strnum;
+				calculate();
+			}
+			strnum = "";
+			pattern = 'f';
+			str = "1/" + str;
+			text.setText(str);
+		});
+
 	//create a method to calculate the number
 	//when press plus button, minus button, etc
 	public void calculate(){
 		switch(pattern){
 			case '+':
 				total = total + Double.valueOf(strnum);
+				break;
+				
+			case '-':
+				total = total - Double.valueOf(strnum);
+				break;
+					
+			case 'x':
+				total = total * Double.valueOf(strnum);
+				break;
+					
+			case '/':
+				total = total / Double.valueOf(strnum);
+				break;
+					
+			case '%':
+				total = total / 100;
+				break;
+					
+			case 'f':
+				total = 1 / total;
 				break;
 			
 		}
